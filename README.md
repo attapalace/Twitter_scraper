@@ -1,6 +1,8 @@
 # Twitter_scraper
 Scraper streamlit app to scrape tweets with no limits
 
+i used snscrape https://github.com/JustAnotherArchivist/snscrape for this task
+
 for the Scraping_data_program.py i used the dev version of snscrape by installing it using 
 pip install git+https://github.com/JustAnotherArchivist/snscrape.git
 

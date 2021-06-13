@@ -1,3 +1,3 @@
 pandas==1.2.1
 streamlit==0.82.0
-snscrape==0.3.5.dev117+g5e6bc4e
+snscrape==0.3.4

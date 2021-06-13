@@ -21,7 +21,7 @@ pd.set_option('display.max_rows', None)
 
 
 today = date.today()
-st.markdown('if you want to search for either of multiple terms write as (cats OR dogs)')
+st.markdown('if you want to search for either of multiple terms write as (cats OR dogs), if you want to search for exact phrase write "cats and dogs"')
 search_term = st.text_input('Enter your search term')
 from_date = st.text_input('Enter starting date as 2020-06-01 foramt', '2020-06-01')
 until_date = st.text_input('Enter end date as 2021-06-01 foramt',today)

@@ -1,4 +1,2 @@
-os
-pandas
-streamlit
-datetime
+pandas==1.2.1
+streamlit==0.82.0

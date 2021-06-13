@@ -28,7 +28,13 @@ until_date = st.text_input('Enter end date as 2021-06-01 foramt',today)
 
 if st.button('show number of tweets'):  
     if search_term:
-        os.system(f"snscrape --since {from_date} twitter-search '{search_term} until:{until_date}' > result-tweets.txt")
-        tweets_df2 = pd.read_csv('result-tweets.txt')
-        st.markdown('Number Of Tweets :'+ str(tweets_df2.size))
+        os.system(f"snscrape --since {from_date} twitter-search '{search_term} until:{until_date}' > result-tweets.txt") 
+        s = 0
+        if os.stat("result-tweets.txt").st_size == 0:
+            s = 0
+        else:
+            tweets_df2 = pd.read_csv('result-tweets.txt',names = ['link'])
+            s = tweets_df2.size
+            
+        st.markdown('Number Of Tweets :'+ str(s))
 

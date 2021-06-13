@@ -22,13 +22,21 @@ max_results= st.text_input('if you want to show the tweets write the max tweets 
 if st.button('show number of tweets'):  
     if search_term:
         os.system(f"snscrape --jsonl --since {from_date} twitter-search '{search_term} until:{until_date}' > result-tweets.json")
-        tweets_df2 = pd.read_json('result-tweets.json', lines=True)
-        st.markdown('Number Of Tweets :'+ str(tweets_df2.shape[0]))
+        s = 0
+        if os.stat("result-tweets.json").st_size == 0:
+            s = 0
+        else:
+            tweets_df2 = pd.read_json('result-tweets.json', lines=True)
+            s = tweets_df2.shape[0]
+        st.markdown('Number Of Tweets :'+ str(s))
 
 if st.button('show tweets'):  
     if search_term:
         os.system(f"snscrape --jsonl --max-results {max_results} --since {from_date} twitter-search '{search_term} until:{until_date}' > result-tweets.json")
-        tweets_df2 = pd.read_json('result-tweets.json', lines=True)
-        for row in tweets_df2['content'].iteritems():
-            st.text(row)
+        if os.stat("result-tweets.json").st_size == 0:
+            st.text('No tweets found')
+        else:
+            tweets_df2 = pd.read_json('result-tweets.json', lines=True)
+            for row in tweets_df2['content'].iteritems():
+                st.text(row)
 
